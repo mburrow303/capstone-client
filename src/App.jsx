@@ -12,6 +12,7 @@ import ProfileIndex from "./components/profileIndex/ProfileIndex";
 import PostIndex from "./components/postIndex/PostIndex";
 
 function App() {
+  
   const [token, setToken] = useState("");
 
   useEffect(initializeToken, []);
@@ -34,8 +35,6 @@ function App() {
     localStorage.removeItem("token");
   }
 
-
-
   return (
     <div className="App">
       <BrowserRouter>
@@ -51,6 +50,7 @@ function App() {
         </Routes>
         <Footer />
       </BrowserRouter>
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -61,7 +61,7 @@ function App() {
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-        >
+          >
           Learn React
         </a>
       </header> */}
