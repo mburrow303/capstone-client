@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //? import components here
 import Nav from "./components/nav/Nav";
+import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 // import Auth, Signup, Login
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Header />
         <Nav token={token} clearToken={clearToken} />
         <Routes>
           <Route path="/signup" element={<Auth setToken={updateToken} />} />
