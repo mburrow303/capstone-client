@@ -1,12 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Footer from './components/footer/Footer';
-import PostIndex from './components/postIndex/PostIndex';
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+//? import components here
+import Nav from "./components/nav/Nav";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
+// import Auth, Signup, Login
+import ProfileIndex from "./components/profileIndex/ProfileIndex";
+import PostIndex from "./components/postIndex/PostIndex";
 
 function App() {
-
+  
   const [token, setToken] = useState("");
 
   useEffect(initializeToken, []);
@@ -30,10 +36,21 @@ function App() {
   }
 
   return (
-    <div className="App" margin-bottom="50px">
+    <div className="App">
       <BrowserRouter>
-      <Routes>
-        <Route path="/post" element={<PostIndex token={token}/>}/>
+        <Header />
+        <Nav token={token} clearToken={clearToken} />
+        <Routes>
+          <Route path="/signup" element={<Auth setToken={updateToken} />} />
+          <Route path="/login" element={<Login setToken={updateToken} />} />
+          <Route path="/profile" element={<ProfileIndex token={token} />} />
+          <Route path="/post" element={<PostIndex token={token} />} />
+
+
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -48,9 +65,6 @@ function App() {
           Learn React
         </a>
       </header> */}
-            </Routes>
-            <Footer />
-          </BrowserRouter>
     </div>
   );
 }
