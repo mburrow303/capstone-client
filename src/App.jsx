@@ -4,7 +4,11 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //? import components here
+import Nav from "./components/nav/Nav";
+import Footer from "./components/footer/Footer";
+// import Auth, Signup, Login
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
+import PostIndex from "./components/postIndex/PostIndex";
 
 function App() {
   const [token, setToken] = useState("");
@@ -36,7 +40,7 @@ function App() {
       <BrowserRouter>
         <Nav token={token} clearToken={clearToken} />
         <Routes>
-          <Route path="/" element={<Auth setToken={updateToken} />} />
+          <Route path="/signup" element={<Auth setToken={updateToken} />} />
           <Route path="/login" element={<Login setToken={updateToken} />} />
           <Route path="/profile" element={<ProfileIndex token={token} />} />
           <Route path="/post" element={<PostIndex token={token} />} />
