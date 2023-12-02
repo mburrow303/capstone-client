@@ -26,7 +26,7 @@ function UpdateProfile() {
 
   return (
     <div className="update-profile">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleInputChange}>
         <input type="text" value={profile} onChange={handleInputChange} />
         <button type="submit">Update Profile</button>
       </form>

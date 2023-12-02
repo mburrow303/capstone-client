@@ -5,7 +5,7 @@ function DeletePost() {
 
   const [response, setResponse] = useState("");
 
-  const handleInputChange = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -20,11 +20,15 @@ function DeletePost() {
     }
   };
 
+  const handleInputChange = (e) => {
+    setPost(e.target.value);
+  };
+
   return (
     <div className="delete-post">
       <form onSubmit={handleSubmit}>
         <input type="text" value={post} onChange={handleInputChange} />
-        <button type="submit">Post Deleted</button>
+        <button type="submit">Delete Post</button>
       </form>
       {response && <p>{response}</p>}
     </div>

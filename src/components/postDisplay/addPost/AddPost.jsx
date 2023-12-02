@@ -1,11 +1,11 @@
 import React from "react";
 import {useState} from "react";
 import { Button } from 'react';
-import { getAllPosts } from "../../../lib/utils"
+import { getAllPosts } from "../../../lib/utils";
 
 function AddPost({ token, setPosts }) {
   const [text, setText] = useState("");
-  const [posts, setPosts] = useState("");
+  const [postsState, setPostsState] = useState("");
 
   const addPostRoute = "http://127.0.0.1:4000/post/";
 

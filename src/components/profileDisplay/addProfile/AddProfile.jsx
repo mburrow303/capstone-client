@@ -1,3 +1,3 @@
 
 
-export default AddProfile;
+//export default AddProfile;

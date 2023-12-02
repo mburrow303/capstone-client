@@ -2,10 +2,9 @@ import React, { useState } from "react";
 
 function UpdatePost() {
   const [post, setPost] = useState("");
-
   const [response, setResponse] = useState("");
 
-  const handleInputChange = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -24,11 +23,15 @@ function UpdatePost() {
     }
   };
 
+  const handleInputChange = (e) => {
+    setPost(e.target.value);
+  };
+
   return (
     <div className="update-post">
       <form onSubmit={handleSubmit}>
         <input type="text" value={post} onChange={handleInputChange} />
-        <button type="submit">UpDate Post</button>
+        <button type="submit">Update Post</button>
       </form>
       {response && <p>{response}</p>}
     </div>

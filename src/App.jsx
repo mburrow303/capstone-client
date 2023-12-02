@@ -5,9 +5,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 //? import components here
 import Nav from "./components/nav/Nav";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+//import Header from "./components/header/Header";
+//import Footer from "./components/footer/Footer";
 // import Auth, Signup, Login
+//import Signup from "./components/auth/signup/Signup";
+import Auth from "./components/auth/Auth";
+//import Login from "./components/auth/login/Login";
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
 import PostIndex from "./components/postIndex/PostIndex";
 
@@ -38,17 +41,17 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
+        {/* <Header /> */}
         <Nav token={token} clearToken={clearToken} />
         <Routes>
-          <Route path="/signup" element={<Auth setToken={updateToken} />} />
-          <Route path="/login" element={<Login setToken={updateToken} />} />
+
+          <Route path="/" element={<Auth setToken={updateToken} />} />
+          {/* <Route path="/login" element={<Login setToken={updateToken} />} /> */}
           <Route path="/profile" element={<ProfileIndex token={token} />} />
           <Route path="/post" element={<PostIndex token={token} />} />
 
-
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
 
       {/* <header className="App-header">

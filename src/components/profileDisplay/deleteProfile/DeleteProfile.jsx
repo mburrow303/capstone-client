@@ -2,10 +2,9 @@ import React, { useState } from "react";
 
 function DeleteProfile() {
   const [profile, setProfile] = useState("");
-
   const [response, setResponse] = useState("");
 
-  const handleInputChange = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -18,6 +17,10 @@ function DeleteProfile() {
     } catch (err) {
       console.error("Error:", err);
     }
+  };
+
+  const handleInputChange = (e) => {
+    setProfile(e.target.value);
   };
 
   return (

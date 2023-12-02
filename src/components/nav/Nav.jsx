@@ -1,5 +1,5 @@
 import React from "react";
-import {Navbar} from "reactstrap";
+import {Navbar, NavbarBrand} from "reactstrap";
 import {Link} from "react-router-dom";
 
 const Nav = ({ token, clearToken }) => {
