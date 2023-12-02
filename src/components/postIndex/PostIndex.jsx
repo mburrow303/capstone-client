@@ -1,7 +1,8 @@
 import React from "react";
-import AddPost from '../postDisplay/addPost/AddPost';
-// import DeletePost from '../postDisplay/deletePost/DeletePost'
-// import UpdatePost from '../postDisplay/updatePost/UpdatePost';
+import PostDisplay from "../postDisplay/PostDisplay";
+//import AddPost from '../postDisplay/addPost/AddPost';
+//import DeletePost from '../postDisplay/deletePost/DeletePost'
+//import UpdatePost from '../postDisplay/updatePost/UpdatePost';
 import { getAllPosts} from '../../lib/utils';
 
 function PostIndex({ token }) { 
@@ -22,7 +23,8 @@ return (
       console.log(post);
       return <p>{post.text}</p>;
     })}
-    <AddPost token={token} setPost={setPosts} />
+    <PostDisplay token={token} setPost={setPosts} /> 
+    {/* <AddPost token={token} setPost={setPosts} /> */}
   </div>
 );
 }
