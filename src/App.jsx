@@ -13,6 +13,7 @@ import Auth from "./components/auth/Auth";
 //import Login from "./components/auth/login/Login";
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
 import PostIndex from "./components/postIndex/PostIndex";
+import Home from "./components/home/Home";
 
 function App() {
   
@@ -45,8 +46,9 @@ function App() {
         <Nav token={token} clearToken={clearToken} />
         <Routes>
 
-          <Route path="/" element={<Auth setToken={updateToken} />} />
-          {/* <Route path="/login" element={<Login setToken={updateToken} />} /> */}
+          <Route path="/" element={<Home /> } />
+          <Route path="/auth" element={<Auth setToken={updateToken} />} />
+          {/*< Route path="/login" element={<Login setToken={updateToken} />} /> */}
           <Route path="/profile" element={<ProfileIndex token={token} />} />
           <Route path="/post" element={<PostIndex token={token} />} />
 

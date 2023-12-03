@@ -7,6 +7,11 @@ function Signup(props) {
     const [password, setPassword] = useState("");
 
     const [username, setUsername]= useState("");
+    const [firstName, setFirstName]= useState("");
+    const [lastName, setLastName]= useState("");
+    const [bio, setBio]= useState("");
+    const [image, setImage]= useState("");
+
 
     const signupRoute = 'http://localhost:4000/profile/signup';
 
@@ -14,13 +19,16 @@ function Signup(props) {
   return (
 	<div>
 		<form>
-			{/* <input type="text " placeholder='first' onChange={(e) => setFirst(e.target.value)}/>
-			<input type="text" placeholder='last' onChange={(e) => setLast(e.target.value)}/> */}
-			<input type="text" placeholder='username' onChange={(e) => setUsername(e.target.value)} />
+			<input type="text " placeholder='first name' onChange={(e) => setFirstName(e.target.value)}/>
+			<input type="text" placeholder='last name' onChange={(e) => setLastName(e.target.value)}/>
             <input type="text" placeholder='email' onChange={(e) => setEmail(e.target.value)} />
 			<input type="text" placeholder='password' onChange={(e) => setPassword(e.target.value)}  />
-			<button type='submit' onClick={displayInputFields}>Submit</button>
-            <button onClick={() => navigate('/login')}>Back to Login</button>
+			<input type="text" placeholder='username' onChange={(e) => setUsername(e.target.value)} />
+            <input type="text" placeholder='bio' onChange={(e) => setBio(e.target.value)} />
+
+            <input type="text" placeholder='image' onChange={(e) => setImage(e.target.value)} />
+			<button type='submit' onClick={displayInputFields}>Create Account</button>
+            {/* <button onClick={() => navigate('/login')}>Back to Login</button> */}
 		</form>
 	</div>
   )
@@ -37,19 +45,20 @@ function Signup(props) {
             }),
             method: 'POST',
             body:JSON.stringify ({
-                username,
+                firstName,
+                lastName,
                 email,
                 password,
-        
-
-                
+                username,
+                bio,
+                image
             })
         })
             let results = await response.json();
             console.log(results)
             props.setToken(results.token)
             if (response.status === 200) {
-                navigate('/chat');
+                navigate('/profile');
             }
             
             } catch (error) {
