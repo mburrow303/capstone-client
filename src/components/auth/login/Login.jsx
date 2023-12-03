@@ -25,7 +25,7 @@ function Login({setToken}) {
     console.log(response.status);
     setToken(results.token);
     if (response.status === 200) {
-      navigate('/chat');
+      navigate('/profile');
     }
   
 	}
@@ -45,8 +45,8 @@ function Login({setToken}) {
         />
         <br />
         {/* button:s */}
-        <button type="submit">Submit</button> 
-        <button onClick={() => navigate('/signup')}>create account</button>
+        <button type="submit">Login to Account</button> 
+        {/* <button onClick={() => navigate('/profile')}>create account</button> */}
         {/* end button:s */}
         <br />
       </form>

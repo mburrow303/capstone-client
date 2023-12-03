@@ -16,6 +16,8 @@ const Nav = ({ token, clearToken }) => {
               Log Out
             </Link>
           )} */}
+
+          
           <h2>
             <b>Thyme Share</b>
           </h2>
