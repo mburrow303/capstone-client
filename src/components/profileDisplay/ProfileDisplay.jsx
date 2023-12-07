@@ -8,14 +8,14 @@ import { getAllProfiles } from "../../lib/utils";
 import DeleteProfile from "./deleteProfile/DeleteProfile";
 import UpdateProfile from "./updateProfile/UpdateProfile";
 
-function ProfileDisplay({ token, getAllProfiles }) {
+function ProfileDisplay({ token, profiles, setProfiles }) {
   const navigate = useNavigate();
 
   return (
     <div>
       {/* <Signup path="/signup" token={token} getAllProfiles={getAllProfiles} /> */}
       {/* <AddProfile path="/signup" token={token} getAllProfiles={getAllProfiles} /> */}
-      <DeleteProfile path="/profile/:username" token={token} getAllProfiles={getAllProfiles} />
+      <DeleteProfile path="/profile/:username" token={token} profiles={profiles} setProfiles={setProfiles} />
       <UpdateProfile path="/profile/:username" token={token} getAllProfiles={getAllProfiles} />
     </div>
   );

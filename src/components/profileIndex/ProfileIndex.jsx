@@ -25,10 +25,10 @@ function ProfileIndex({ token }) {
         </CardHeader>
         <CardBody style={{ maxHeight: '300px', overflowY: 'auto' }}>
           {profiles.map((profile) => (
-            <ul key={profile.id}>{profile.username}</ul>
+            <ul key={profile.username}>{profile.username}</ul>
           ))}
         </CardBody>
-        <ProfileDisplay token={token} setProfiles={setProfiles} />
+        <ProfileDisplay token={token} profiles={profiles} setProfiles={setProfiles} />
         {/* <AddProfile token={token} setProfiles={setProfiles} /> */}
         {/* <DeleteProfile token={token} setProfiles={setProfiles} /> */}
         {/* <UpdateProfile token={token} setProfiles={setProfiles} /> */}
