@@ -34,7 +34,7 @@ const Home = () => {
               
                 
     
-        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/">
+        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth">
           Login
           </Link></Button>
     
