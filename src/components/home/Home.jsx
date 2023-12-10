@@ -1,21 +1,62 @@
+import React from "react";
 import { Link } from "react-router-dom";
+import {
+   Form, 
+   FormGroup,  
+   Button, 
+  } from "reactstrap";
+import "../Styles/Home.css";
+import "bootstrap/dist/css/bootstrap.css";
+// import { Card, CardBody, CardTitle, CardSubtitle, CardText, CardLink} from "react-router-dom";
 
-const Home = ({token, clearToken}) => {
-
+const Home = () => {
   return (
-    <nav>
-      <Link style={{margin:'3px 10px'}} to="/">Home</Link>
-      {/* Link tags want at least one property, "to". This is going to tell the Link which route to go to */}
-      <Link style={{margin:'3px 10px'}} to="/auth">Login/Signup</Link>
-      {/* {
-        !token
-        ?
-        <Link style={{margin:'3px 10px'}} to="/auth">Sign Up</Link>
-        :
-        <Link onClick={clearToken} style={{margin:'3px 10px'}} to="/">Log Out</Link>
-      } */}
-    </nav>
-  )
-}
+    Form,
+    FormGroup,
+    Link,
+    Button,
+    (
+    <>
+    
+    
+      <Form className='container'>
+      <img src="https://github.com/maryreagan/mini-search/blob/master/favicon.png?raw=true"></img>
+        <FormGroup floating>
+          
+           {/* <Link class="link" style={{ margin: "3px 10px" }} to="/auth"></Link> */}
+                
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+              
+                
+    
+        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth">
+          Login
+          </Link></Button>
+    
+   </FormGroup>
+      </Form>
 
-export default Home;
+      <Form className="bottom">
+        Don't Have an account? 
+        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth">
+          Sign Up
+          </Link></Button>
+
+      </Form>
+
+      
+    </>
+    )
+  );
+};
+
+
+
+export { 
+   Home, 
+};

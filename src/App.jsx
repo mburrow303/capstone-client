@@ -13,7 +13,7 @@ import Auth from "./components/auth/Auth";
 //import Login from "./components/auth/login/Login";
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
 import PostIndex from "./components/postIndex/PostIndex";
-import Home from "./components/home/Home";
+import {Home, Home2} from "./components/home/Home";
 
 function App() {
   
@@ -43,10 +43,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         {/* <Header /> */}
-        <Nav token={token} clearToken={clearToken} />
+        {/* <Nav token={token} clearToken={clearToken} /> */}
         <Routes>
 
-          <Route path="/" element={<Home /> } />
+          <Route path="/" element={<Home />} />
           <Route path="/auth" element={<Auth setToken={updateToken} />} />
           {/*< Route path="/login" element={<Login setToken={updateToken} />} /> */}
           <Route path="/profile" element={<ProfileIndex token={token} />} />
