@@ -1,0 +1,13 @@
+body {
+  background-color: #d2b48c !important;
+  margin: 0 !important;
+  padding: 0!important;
+}
+
+#back_to_login{
+  margin-top: 2rem;
+}
+
+#signup_heading{
+  margin-bottom: 2.5rem;
+}
