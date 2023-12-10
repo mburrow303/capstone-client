@@ -1,19 +1,24 @@
 import React, { useState } from "react";
-import {Button} from "reactstrap";
-//import { getAllProfiles } from "../../../lib/utils";
+import { Button } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
-function DeleteProfile({profile, token, profiles, setProfiles}) {
-  const [username, setUsername] = useState("");
-  //const [profile, setProfile] = useState("");
+function DeleteProfile({ userId, token, profiles, setProfiles }) {
+  
   const [response, setResponse] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //let updatedProfiles;
+    // Confirmation Dialog
+    const isConfirmed = window.confirm("Are you sure you want to delete your profile?");
+    if (!isConfirmed) {
+      return; // If not confirmed, do nothing
+    }
 
     try {
-      let response = await fetch(`http://127.0.0.1:4000/profile/${username}`, {
+
+      let response = await fetch(`http://127.0.0.1:4000/profile/${userId}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -21,45 +26,40 @@ function DeleteProfile({profile, token, profiles, setProfiles}) {
         },
       });
 
-      const data = await response.json();
-      console.log("Profile deleted!:", data);
-
-      //console.log(getAllProfiles);
-      const deletedProfile = data.deletedProfile || {};
-      console.log("Deleted Profile:", deletedProfile);
-
-      const deletedUsername = deletedProfile.username || null;
-
-      setResponse(deletedUsername);
-
-      console.log("Original Profiles:", profiles);
-      console.log("Deleted Username:", deletedUsername);
-      
-      //getAllProfiles();
-      
-      // Update profiles after deletion
-      const updatedProfiles = profiles.filter(
-        (profile) => profile.username !== deletedUsername
+      if (response.ok) {
+        // Update profiles after deletion
+        const data = await response.json();
+        const updatedProfiles = profiles.filter(
+          (profile) => profile._id !== data.deletedProfile._id
         );
+        setProfiles(updatedProfiles);
+
+        console.log("Profile Deleted:", data.deletedProfile);
         
-      console.log("Updated Profiles:", updatedProfiles);
-      setProfiles(updatedProfiles);
-
+        setResponse(`Profile deleted successfully. Deleted Profile: ${JSON.stringify(data.deletedProfile)}`);
+        
+        navigate("/");
+      } else {
+        const data = await response.json()
+        console.error("Error deleting profile:", data.message);
+        setResponse("Error deleting profile. Please try again.");
+      }
     } catch (err) {
-      console.error("Error deleting profile:", err);
+      console.error("Error handling response:", err);
+      
+      //console.log("Response status:", response.status);  
+      //console.log("Response text:", await response.text());  
+      setResponse("Error deleting profile. Please try again.");
     }
-  };
-
-  const handleInputChange = (e) => {
-    setUsername(e.target.value);
   };
 
   return (
     <div className="delete-profile">
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="username" value={username} onChange={handleInputChange} />
-        <Button color="danger" type="submit"  >Delete Profile</Button>
-      </form>
+      
+        <Button color="danger" onClick={handleSubmit}>
+          Delete Profile
+        </Button>
+      
       {response && <p>{response}</p>}
     </div>
   );

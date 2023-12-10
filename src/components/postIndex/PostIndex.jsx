@@ -1,32 +1,34 @@
-import React from "react";
-import PostDisplay from "../postDisplay/PostDisplay";
-//import AddPost from '../postDisplay/addPost/AddPost';
-//import DeletePost from '../postDisplay/deletePost/DeletePost'
-//import UpdatePost from '../postDisplay/updatePost/UpdatePost';
-import { getAllPosts} from '../../lib/utils';
+import React, { useEffect } from "react";
+import { Card, CardBody, CardHeader } from "reactstrap";
+import { getAllPosts } from "../../lib/utils";
 
-function PostIndex({ token }) { 
+import PostDisplay from "../postDisplay/PostDisplay";
+
+function PostIndex({ token }) {
   const [posts, setPosts] = React.useState([]);
 
-React.useEffect( () => {
-  async function runEffect() {
-    const allPosts = await getAllPosts(token);
-    setPosts(allPosts);
-  }
-  runEffect();
-},
-);
+  useEffect(() => {
+    getAllPosts(token).then((data) => {
+      setPosts(data);
+    });
+  }, [token]);
 
-return (
-  <div>
-    {posts.map((post) => {
-      console.log(post);
-      return <p>{post.text}</p>;
-    })}
-    <PostDisplay token={token} setPost={setPosts} /> 
-    {/* <AddPost token={token} setPost={setPosts} /> */}
-  </div>
-);
+  return (
+    <div>
+      <Card className="my-2" style={{ width: "18rem" }}>
+        <CardHeader>
+          <h2>User Posts</h2>
+        </CardHeader>
+        <CardBody style={{ maxHeight: "300px", overflowY: "auto" }}>
+          {posts.map((post) => {
+            console.log(post);
+            return <p key={post._id}>{post.text}</p>;
+          })}
+        </CardBody>
+        <PostDisplay token={token} posts={posts} setPosts={setPosts} />
+      </Card>
+    </div>
+  );
 }
 
 export default PostIndex;

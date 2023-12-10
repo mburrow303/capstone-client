@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 
-const Home = ({token, clearToken}) => {
-
+const Home = ({ token, clearToken }) => {
   return (
     <nav>
-      <Link style={{margin:'3px 10px'}} to="/">Home</Link>
-      {/* Link tags want at least one property, "to". This is going to tell the Link which route to go to */}
-      <Link style={{margin:'3px 10px'}} to="/auth">Login/Signup</Link>
+      <Link style={{ margin: "3px 10px" }} to="/">
+        Home
+      </Link>
+      <Link style={{ margin: "3px 10px" }} to="/auth">
+        Login/Signup
+      </Link>
       {/* {
         !token
         ?
@@ -15,7 +17,7 @@ const Home = ({token, clearToken}) => {
         <Link onClick={clearToken} style={{margin:'3px 10px'}} to="/">Log Out</Link>
       } */}
     </nav>
-  )
-}
+  );
+};
 
 export default Home;

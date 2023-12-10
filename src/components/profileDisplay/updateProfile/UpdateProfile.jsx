@@ -1,101 +1,113 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {Button} from "reactstrap";
+import { Button } from "reactstrap";
 
-function UpdateProfile() {
-  //const [profile, setProfile] = useState("");
-  const navigate = useNavigate();
-  const [token, setToken] = useState("")
-  
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const [bio, setBio] = useState("");
-  const [image, setImage] = useState("");
-
+function UpdateProfile({ userId, token }) {
   const [response, setResponse] = useState("");
+  const navigate = useNavigate();
+
+  const [fields, setFields] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    username: "",
+    bio: "",
+    image: "",
+  });
 
   useEffect(() => {
-    // Retrieve the token from local storage when the component mounts
-    const storedToken = localStorage.getItem("token");
-    if (storedToken) {
-      setToken(storedToken);
-    }
-  }, []);
+    // Fetch the current profile data when the component mounts
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch(
+          `http://127.0.0.1:4000/profile/${userId}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          const { found } = data;
+
+          setFields(found);
+        } else {
+          console.error("Error fetching profile:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+
+    fetchProfile();
+  }, [userId, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://127.0.0.1:4000/profile/${username}`, {
-        headers: new Headers ({
-          "Content-Type": "application/json",
-          "Authorization": `${token}`,
-        }),
-        method: "PATCH",
-        body: JSON.stringify({
-           firstName: firstName,
-           lastName: lastName,
-           email: email,
-           password: password,
-           username: username,
-           bio: bio,
-           image: image
-           }),
+      const requestBody = {};
+
+      Object.keys(fields).forEach((key) => {
+        if (typeof fields[key] === "string" && fields[key].trim() !== "") {
+          requestBody[key] = fields[key];
+        }
       });
 
-      const data = await response.json();
-      setResponse(data.username);
-      console.log("Profile Updated!:", data);
+      const response = await fetch(`http://127.0.0.1:4000/profile/${userId}`, {
+        headers: new Headers({
+          "Content-Type": "application/json",
+          Authorization: `${token}`,
+        }),
+        method: "PATCH",
+        body: JSON.stringify(requestBody),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setResponse(data.message);
+        console.log("Profile Updated!:", data);
+      } else {
+        const data = await response.json();
+        console.error("Error:", data.message);
+        setResponse("Error updating profile. Please try again.");
+      }
     } catch (err) {
       console.error("Error:", err);
-      console.log("Response:", await err.response.json());
+      setResponse("Error updating profile. Please try again.");
     }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-  switch (name) {
-    case "firstName":
-      setFirstName(value);
-      break;
-    case "lastName":
-      setLastName(value);
-      break;
-    case "email":
-      setEmail(value);
-      break;
-    case "password":
-      setPassword(value);
-      break;
-    case "username":
-      setUsername(value);
-      break;
-    case "bio":
-      setBio(value);
-      break;
-    case "image":
-      setImage(value);
-      break;        
-    default:
-      break;
-   }
+    setFields((prevFields) => ({ ...prevFields, [name]: value }));
   };
 
   return (
     <div className="update-profile">
       <form onSubmit={handleSubmit}>
-        <input type="text" name="firstName" placeholder="first name" value={firstName || ''}onChange={handleInputChange} />
-        <input type="text" name="lastName" placeholder="last name" value={lastName || ''} onChange={handleInputChange} />
-        <input type="text" name="email" placeholder="email" value={email || ''} onChange={handleInputChange} />
-        <input type="password" name="password" placeholder="password" value={password || ''} onChange={handleInputChange} />
-        <input type="text" name="username" placeholder="username" value={username || ''}onChange={handleInputChange} />
-        <input type="text" name="bio" placeholder="bio" value={bio || ''} onChange={handleInputChange} />
-        <input type="text" name="image" placeholder="image" value={image || ''}onChange={handleInputChange} />
-
-        <Button type="button" onClick={handleSubmit}>Update Profile</Button>
+        {Object.keys(fields).map(
+          (key) =>
+            // Exclude unwanted fields (_id, __v) from the form
+            key !== "_id" &&
+            key !== "__v" && (
+              <input
+                key={key}
+                type="text"
+                name={key}
+                placeholder={key}
+                value={fields[key]}
+                onChange={handleInputChange}
+              />
+            )
+        )}
+        <Button type="button" onClick={handleSubmit}>
+          Update Profile
+        </Button>
       </form>
       {response && <p>{response}</p>}
     </div>
