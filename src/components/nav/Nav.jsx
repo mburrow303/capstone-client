@@ -1,6 +1,6 @@
 import React from "react";
-import {Navbar, NavbarBrand} from "reactstrap";
-import {Link} from "react-router-dom";
+import { Navbar, NavbarBrand } from "reactstrap";
+import { Link } from "react-router-dom";
 
 const Nav = ({ token, clearToken }) => {
   return (
@@ -16,8 +16,6 @@ const Nav = ({ token, clearToken }) => {
               Log Out
             </Link>
           )} */}
-
-          
           <h2>
             <b>Thyme Share</b>
           </h2>
