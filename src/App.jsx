@@ -41,8 +41,8 @@ function App() {
         {/* <Header /> */}
         <Nav token={token} clearToken={clearToken} /> 
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth setToken={updateToken} />} />
+          <Route path="/" element={<Auth setToken={updateToken}/>} />
+          <Route path="/home" element={<Home/>} />
           {/*< Route path="/login" element={<Login setToken={updateToken} />} /> */}
           <Route path="/profile/:userId" element={<ProfileIndex token={token} />} />
           <Route path="/post" element={<PostIndex token={token} />} />
