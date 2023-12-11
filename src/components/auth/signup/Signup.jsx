@@ -22,33 +22,33 @@ function Signup(props) {
           type="text "
           placeholder="first name"
           onChange={(e) => setFirstName(e.target.value)}
-        />
+        /><br/>
         <input
           type="text"
           placeholder="last name"
           onChange={(e) => setLastName(e.target.value)}
-        />
+        /><br/>
         <input
           type="text"
           placeholder="email"
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /><br/>
         <input
           type="password"
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
-        />
+        /><br/>
         <input
           type="text"
           placeholder="username"
           onChange={(e) => setUsername(e.target.value)}
-        />
+        /><br/>
         <input
           type="text"
           placeholder="bio"
           onChange={(e) => setBio(e.target.value)}
         />
-        <br></br>
+        </br>
         {/* <label for="image" >
          Image    
         </label>  */}
