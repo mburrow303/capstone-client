@@ -37,9 +37,9 @@ function Auth(props) {
       <br></br>
       <br></br>
       <br></br>
-      <div id="signup" style={{ width: "48%", display: "inline-block" }}>
+      <div id="signup" style={{ width: "48%", display: "none" }}>
         {/* Signup Component */}
-        <h2>Signup</h2>
+        <h2 id="signup_heading">Signup</h2>
         <Signup setToken={props.setToken} />
       </div>
       <div id="back_to_login" style={{display:"none"}}><p>Already have an account?</p>
