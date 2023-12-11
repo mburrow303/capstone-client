@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 
-function UpdateProfile({ userId, token }) {
+function UpdateProfile({ token, userId }) {
   const [response, setResponse] = useState("");
+  const [modal, setModal] = useState(false);
   const navigate = useNavigate();
 
   const [fields, setFields] = useState({
@@ -44,7 +45,9 @@ function UpdateProfile({ userId, token }) {
     };
 
     fetchProfile();
-  }, [userId, token]);
+  }, [token, userId]);
+
+  const toggleModal = () => setModal(!modal);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +74,7 @@ function UpdateProfile({ userId, token }) {
         const data = await response.json();
         setResponse(data.message);
         console.log("Profile Updated!:", data);
+        toggleModal();
       } else {
         const data = await response.json();
         console.error("Error:", data.message);
@@ -89,26 +93,40 @@ function UpdateProfile({ userId, token }) {
 
   return (
     <div className="update-profile">
-      <form onSubmit={handleSubmit}>
-        {Object.keys(fields).map(
-          (key) =>
-            // Exclude unwanted fields (_id, __v) from the form
-            key !== "_id" &&
-            key !== "__v" && (
-              <input
-                key={key}
-                type="text"
-                name={key}
-                placeholder={key}
-                value={fields[key]}
-                onChange={handleInputChange}
-              />
-            )
-        )}
-        <Button type="button" onClick={handleSubmit}>
-          Update Profile
-        </Button>
-      </form>
+      <button color="secondary" size="sm" onClick={toggleModal}>
+        Edit Profile
+      </button>
+      <Modal isOpen={modal} toggle={toggleModal} fullscreen>
+        <ModalHeader toggle={toggleModal}>Update Profile</ModalHeader>
+        <ModalBody>
+          <form onSubmit={handleSubmit}>
+            {Object.keys(fields).map(
+              (key) =>
+                // Exclude unwanted fields (_id, __v) from the form
+                key !== "_id" &&
+                key !== "__v" && (
+                  <input
+                    key={key}
+                    type="text"
+                    name={key}
+                    placeholder={key}
+                    value={fields[key]}
+                    onChange={handleInputChange}
+                  />
+                )
+            )}
+            <br></br>
+            <button type="button" color="secondary" onClick={handleSubmit}>
+              Update Profile
+            </button>
+          </form>
+        </ModalBody>
+        <ModalFooter>
+          <button color="secondary" onClick={toggleModal}>
+            Cancel
+          </button>
+        </ModalFooter>
+      </Modal>
       {response && <p>{response}</p>}
     </div>
   );
