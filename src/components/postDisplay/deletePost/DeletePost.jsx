@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button } from "reactstrap";
+import "./DeletePost.css";
 
 function DeletePost({ token, post, setPosts, id }) {
   //const [post, setPost] = useState("");
@@ -19,9 +19,7 @@ function DeletePost({ token, post, setPosts, id }) {
       const data = await response.json();
       setResponse(data.post);
       // Remove the deleted post from the posts state
-      setPosts((prevPosts) =>
-        prevPosts.filter((p) => p._id !== post._id)
-      );
+      setPosts((prevPosts) => prevPosts.filter((p) => p._id !== post._id));
     } catch (err) {
       console.error("Error:", err);
     }
@@ -41,9 +39,9 @@ function DeletePost({ token, post, setPosts, id }) {
           value={post}
           onChange={handleInputChange}
         /> */}
-        <Button type="submit" color="danger">
+        <button className="delete-button" type="submit" color="danger">
           Delete Post
-        </Button>
+        </button>
       </form>
       {response && <p>{response}</p>}
     </div>

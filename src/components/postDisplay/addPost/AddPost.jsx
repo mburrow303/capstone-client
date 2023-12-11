@@ -7,7 +7,9 @@ import {
   ModalFooter,
   Form,
   FormGroup,
+  FormText,
   Input,
+  Label,
 } from "reactstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllPosts } from "../../../lib/utils";
@@ -67,10 +69,10 @@ function AddPost({ token, setPosts }) {
 
   return (
     <div style={{ width: "48%", display: "inline-block" }}>
-      <Button color="primary" onClick={toggle}>
-        Add Post
-      </Button>
-      <Modal isOpen={modal} toggle={toggle}>
+      <button color="secondary" size="sm" onClick={toggle}>
+        Add New Recipe Post
+      </button>
+      <Modal isOpen={modal} toggle={toggle} fullscreen>
         <ModalHeader toggle={toggle}>Add New Recipe Post</ModalHeader>
         <ModalBody>
           <Form onSubmit={addNewPost}>
@@ -105,21 +107,29 @@ function AddPost({ token, setPosts }) {
               />
             </FormGroup>
             <FormGroup>
+              <Label for="cover">Recipe Cover Photo</Label>
+              <Input
+                id="cover"
+                type="file"
+                placeholder="Cover Photo"
+                onChange={(e) => setCoverPhoto(e.target.value)}
+              />
+              <FormText>Upload a Recipe Cover Photo</FormText>
+            </FormGroup>
+            {/* <FormGroup>
               <Input
                 placeholder="Cover Photo"
                 onChange={(e) => setCoverPhoto(e.target.value)}
               />
-            </FormGroup>
-            {/* <FormGroup>
-              <Input
-                placeholder="Username"
-                onChange={(e) => setUsername(e.target.value)}
-              />
             </FormGroup> */}
-            <Button color="secondary">Create Recipe Post</Button>
-            <Button color="secondary" onClick={toggle}>
+            <button color="secondary" size="sm">
+              Create New Recipe Post
+            </button>
+            <br></br>
+            <br></br>
+            <button color="secondary" size="sm" onClick={toggle}>
               Cancel
-            </Button>
+            </button>
           </Form>
         </ModalBody>
         <ModalFooter></ModalFooter>

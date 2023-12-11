@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import { getAllPosts } from "../../lib/utils";
+import "./PostIndex.css";
 
 import PostDisplay from "../postDisplay/PostDisplay";
 
@@ -16,7 +17,7 @@ function PostIndex({ token }) {
 
   return (
     <div>
-      <Card className="my-2" style={{ width: "18rem" }}>
+      {/* <Card className="my-2" style={{ width: "18rem" }}>
         <CardHeader>
           <h2>User Posts</h2>
         </CardHeader>
@@ -26,8 +27,12 @@ function PostIndex({ token }) {
             return <p key={post._id}>{post.text}</p>;
           })}
         </CardBody>
-        <PostDisplay token={token} posts={posts} setPosts={setPosts} /* userId={userId} */ />
-      </Card>
+      </Card> */}
+      <PostDisplay
+        token={token}
+        posts={posts}
+        setPosts={setPosts} /* userId={userId} */
+      />
     </div>
   );
 }

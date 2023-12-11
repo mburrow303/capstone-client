@@ -33,7 +33,10 @@ function Auth(props) {
         <p id="no_account">Don't have an account?</p>
         <button id="toggle" onClick={() => handleClick()}>Sign Up</button>
       </div>
-      
+      <br></br>
+      <br></br>
+      <br></br>
+      <br></br>
       <div id="signup" style={{ width: "48%", display: "inline-block" }}>
         {/* Signup Component */}
         <h2>Signup</h2>
