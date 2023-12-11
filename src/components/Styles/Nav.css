@@ -1,0 +1,21 @@
+
+
+.navbar  {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #4d4d4d;
+  
+}
+
+.navbar a {
+  font-size: 2rem;
+  width: 25%;
+  /* text-align: center; */
+  color: #808080;
+}
+
+.a:hover {
+  background-color: #ECECEC;
+}
