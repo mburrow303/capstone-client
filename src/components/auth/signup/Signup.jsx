@@ -48,7 +48,7 @@ function Signup(props) {
           placeholder="bio"
           onChange={(e) => setBio(e.target.value)}
         />
-        </br>
+        <br/>
         {/* <label for="image" >
          Image    
         </label>  */}
