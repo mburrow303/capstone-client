@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './signup.css';
+import "./signup.css";
 
 function Signup(props) {
   const navigate = useNavigate("/profile");
@@ -48,11 +48,18 @@ function Signup(props) {
           placeholder="bio"
           onChange={(e) => setBio(e.target.value)}
         />
+        <br></br>
+        {/* <label for="image" >
+         Image    
+        </label>  */}
         <input
-          type="text"
+          id="image"
+          type="file"
           placeholder="image"
           onChange={(e) => setImage(e.target.value)}
         />
+        <text>Upload a Profile Image</text>
+        <br></br>
         <button type="submit" onClick={displayInputFields}>
           Create Account
         </button>

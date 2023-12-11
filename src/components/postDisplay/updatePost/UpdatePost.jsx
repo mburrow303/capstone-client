@@ -8,6 +8,8 @@ import {
   ModalFooter,
   Form,
   FormGroup,
+  FormText,
+  Label,
   Input,
 } from "reactstrap";
 import { getAllPosts } from "../../../lib/utils";
@@ -37,7 +39,7 @@ function UpdatePost({ token, post, setPosts, id }) {
           "Content-Type": "application/json",
           Authorization: token,
         },
-        body: JSON.stringify({ 
+        body: JSON.stringify({
           title: updatedTitle,
           description: updatedDescription,
           ingredients: updatedIngredients,
@@ -45,7 +47,7 @@ function UpdatePost({ token, post, setPosts, id }) {
           notes: updatedNotes,
           coverPhoto: updatedCoverPhoto,
           //username: updatedUsername,
-         }),
+        }),
       });
 
       const data = await response.json();
@@ -68,10 +70,10 @@ function UpdatePost({ token, post, setPosts, id }) {
       className="update-post"
       style={{ width: "48%", display: "inline-block" }}
     >
-      <Button color="primary" onClick={toggle}>
+      <button color="secondary" size="sm" onClick={toggle}>
         Edit Post
-      </Button>
-      <Modal isOpen={modal} toggle={toggle}>
+      </button>
+      <Modal isOpen={modal} toggle={toggle} fullscreen>
         <ModalHeader toggle={toggle}>Edit Recipe Post</ModalHeader>
         <ModalBody>
           <Form>
@@ -106,10 +108,14 @@ function UpdatePost({ token, post, setPosts, id }) {
               />
             </FormGroup>
             <FormGroup>
+              <Label for="cover">Recipe Cover Photo</Label>
               <Input
+                id="cover"
+                type="file"
                 placeholder="Cover Photo"
                 onChange={(e) => setUpdatedCoverPhoto(e.target.value)}
               />
+              <FormText>Upload a Recipe Cover Photo</FormText>
             </FormGroup>
             {/* <FormGroup>
               <Input
@@ -120,12 +126,12 @@ function UpdatePost({ token, post, setPosts, id }) {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={UpdatePost}>
+          <button color="secondary" size="sm" onClick={UpdatePost}>
             Update Recipe Post
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          </button>{" "}
+          <button color="secondary" size="sm" onClick={toggle}>
             Cancel
-          </Button>
+          </button>
         </ModalFooter>
       </Modal>
     </div>
