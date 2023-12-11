@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 //? import components here
 import Nav from "./components/nav/Nav";
@@ -13,7 +13,9 @@ import PostIndex from "./components/postIndex/PostIndex";
 import {Home, Home2} from "./components/home/Home";
 
 function App() {
+  //console.log("userId in App:", );
   const [token, setToken] = useState("");
+  //const { userId } = useParams();
 
   useEffect(initializeToken, []);
 
@@ -44,8 +46,8 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/auth" element={<Auth setToken={updateToken}/>} />
           {/*< Route path="/login" element={<Login setToken={updateToken} />} /> */}
-          <Route path="/profile/:userId" element={<ProfileIndex token={token} />} />
-          <Route path="/post" element={<PostIndex token={token} />} />
+          <Route path="/profile/:userId" element={<ProfileIndex token={token} /* userId={userId} */ />} />
+          <Route path="/post/:userId" element={<PostIndex token={token} /* userId={userId} */ />} />
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>

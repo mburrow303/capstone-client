@@ -2,9 +2,13 @@ import React from "react";
 import { Card, CardBody, CardHeader } from "reactstrap";
 import { getAllProfiles } from "../../lib/utils";
 import ProfileDisplay from "../profileDisplay/ProfileDisplay";
+import { useParams } from "react-router";
 
 function ProfileIndex({ token }) {
   const [profiles, setProfiles] = React.useState([]);
+  
+  let {userId} = useParams();
+  console.log(userId);
 
   React.useEffect(() => {
     async function runEffect() {
@@ -29,6 +33,7 @@ function ProfileIndex({ token }) {
           token={token}
           profiles={profiles}
           setProfiles={setProfiles}
+          userId={userId}
         />
       </Card>
     </div>

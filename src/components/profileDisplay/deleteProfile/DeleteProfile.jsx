@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { useNavigate } from "react-router-dom";
 
-function DeleteProfile({ userId, token, profiles, setProfiles }) {
+function DeleteProfile({ token, profiles, setProfiles, userId }) {
   
   const [response, setResponse] = useState("");
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
 
-function UpdateProfile({ userId, token }) {
+function UpdateProfile({ token, userId }) {
   const [response, setResponse] = useState("");
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ function UpdateProfile({ userId, token }) {
     };
 
     fetchProfile();
-  }, [userId, token]);
+  }, [token, userId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

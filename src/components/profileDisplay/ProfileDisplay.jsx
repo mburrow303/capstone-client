@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllProfiles } from "../../lib/utils";
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 import DeleteProfile from "./deleteProfile/DeleteProfile";
 import UpdateProfile from "./updateProfile/UpdateProfile";
@@ -14,7 +16,7 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
 
   // Fetch the profile based on userId
   useEffect(() => {
-    console.log("Fetching profile for userId:", userId);
+    //console.log("Fetching profile for userId:", userId);
     
     const fetchProfile = async () => {
       try {
@@ -48,6 +50,11 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
       ) : (
          profile && (
         <>
+          <UpdateProfile
+            userId={userId}
+            token={token}
+            getAllProfiles={getAllProfiles}
+          /> 
           <DeleteProfile
             userId={userId}
             profile={profile}
@@ -55,11 +62,9 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
             profiles={profiles}
             setProfiles={setProfiles}
           />
-           <UpdateProfile
-            userId={userId}
-            token={token}
-            getAllProfiles={getAllProfiles}
-          /> 
+          <Link to={`/post/${userId}`}>
+            <Button color="secondary" >Add New Post</Button>
+          </Link>
         </>
          )
       )}

@@ -7,9 +7,10 @@ import UpdatePost from "./updatePost/UpdatePost";
 import DeletePost from "./deletePost/DeletePost";
 
 function PostDisplay({ token, posts, setPosts, currentUser }) {
+  //console.log("userId in PostDisplay:", userId);
   return (
     <div>
-      <AddPost token={token} setPosts={setPosts} />
+      <AddPost token={token} setPosts={setPosts} /* userId={userId} */ />
       {posts.map((post) => (
         <div key={post._id}>
           {post.username === currentUser && (

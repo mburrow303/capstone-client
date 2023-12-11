@@ -9,14 +9,13 @@ import {
   FormGroup,
   Input,
 } from "reactstrap";
+import { useNavigate, useParams } from "react-router-dom";
 import { getAllPosts } from "../../../lib/utils";
 
 function AddPost({ token, setPosts }) {
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
-
-  //const [text, setText] = useState("");
-  //const [postsState, setPostsState] = useState("");
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -26,11 +25,14 @@ function AddPost({ token, setPosts }) {
   const [coverPhoto, setCoverPhoto] = useState("");
   const [username, setUsername] = useState("");
 
-  const addPostRoute = "http://127.0.0.1:4000/post/";
+  let { userId } = useParams();
 
-  async function AddNewPost(e) {
+  async function addNewPost(e) {
     e.preventDefault();
+    //console.log("userId in AddPost:", userId);
     console.log("testing this add a post function!");
+
+    const addPostRoute = `http://127.0.0.1:4000/post`;
 
     //* Add a New Post
     let response = await fetch(addPostRoute, {
@@ -57,7 +59,9 @@ function AddPost({ token, setPosts }) {
       const posts = await getAllPosts(token);
 
       // Update post in parent state
-      //setPosts(posts);
+      setPosts(posts);
+      // Navigate to the user's profile page after post is created
+      navigate(`/profile/${userId}`);
     }
   }
 
@@ -69,7 +73,7 @@ function AddPost({ token, setPosts }) {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Add New Recipe Post</ModalHeader>
         <ModalBody>
-          <Form>
+          <Form onSubmit={addNewPost}>
             <FormGroup>
               <Input
                 placeholder="Recipe Title"
@@ -112,16 +116,13 @@ function AddPost({ token, setPosts }) {
                 onChange={(e) => setUsername(e.target.value)}
               />
             </FormGroup> */}
+            <Button color="secondary">Create Recipe Post</Button>
+            <Button color="secondary" onClick={toggle}>
+              Cancel
+            </Button>
           </Form>
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={AddNewPost}>
-            Create Recipe Post
-          </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
-            Cancel
-          </Button>
-        </ModalFooter>
+        <ModalFooter></ModalFooter>
       </Modal>
     </div>
   );

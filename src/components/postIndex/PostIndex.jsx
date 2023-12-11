@@ -5,6 +5,7 @@ import { getAllPosts } from "../../lib/utils";
 import PostDisplay from "../postDisplay/PostDisplay";
 
 function PostIndex({ token }) {
+  //console.log("userId in PostIndex:", userId);
   const [posts, setPosts] = React.useState([]);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function PostIndex({ token }) {
             return <p key={post._id}>{post.text}</p>;
           })}
         </CardBody>
-        <PostDisplay token={token} posts={posts} setPosts={setPosts} />
+        <PostDisplay token={token} posts={posts} setPosts={setPosts} /* userId={userId} */ />
       </Card>
     </div>
   );
