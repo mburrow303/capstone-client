@@ -16,8 +16,8 @@ const Home = () => {
     Link,
     Button,
     (
+    <body>
     <>
-    
     
       <Form className='container'>
       <img src="https://github.com/maryreagan/mini-search/blob/master/favicon.png?raw=true"></img>
@@ -43,18 +43,17 @@ const Home = () => {
 
       <Form className="bottom">
         Don't Have an account? 
-        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth">
-          Sign Up
-          </Link></Button>
+        <br></br>
+        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth"> Sign Up</Link></Button>
 
       </Form>
-
       
     </>
+      </body>
     )
   );
 };
 
 export { 
-   Home, 
+   Home 
 };

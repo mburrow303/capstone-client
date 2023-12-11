@@ -10,7 +10,7 @@ import Nav from "./components/nav/Nav";
 import Auth from "./components/auth/Auth";
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
 import PostIndex from "./components/postIndex/PostIndex";
-import {Home, Home2} from "./components/home/Home";
+import { Home } from "./components/home/Home";
 
 function App() {
   const [token, setToken] = useState("");
