@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./ProfileDisplay.css";
 
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button} from 'reactstrap';
+
 import DeleteProfile from "./deleteProfile/DeleteProfile";
 import UpdateProfile from "./updateProfile/UpdateProfile";
 
@@ -47,6 +49,42 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
 
   return (
     <div>
+      <Card id="picture">
+  <img
+    alt="Sample"
+    src="https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHdvbWVuJTIwZWF0aW5nJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+  />
+  <CardBody>
+    <CardTitle tag="h5">
+      Mary Reagan
+    </CardTitle>
+    <CardSubtitle
+      className="mb-2 text-muted"
+      tag="h6"
+    >
+      
+    </CardSubtitle>
+    <CardText>
+     I'm a home chef and I love asian inspired meals
+    </CardText>
+    
+  </CardBody>
+</Card>
+
+<img
+    alt="Sample"
+    src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fEFzaWFuJTIwJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+  />
+<img
+    alt="Sample"
+    src="https://plus.unsplash.com/premium_photo-1700677185839-6c43037e46be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjF8fGhvbWVtYWRlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+  />
+  
+<img
+    alt="Sample"
+    src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGhvbWVtYWRlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
+  />
+
       {/* Render the DeleteProfile and UpdateProfile components only when the profile is available */}
       {error ? (
         <p>Error: {error}</p>
