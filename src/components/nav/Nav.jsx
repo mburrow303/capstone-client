@@ -6,31 +6,32 @@ import { AiOutlineHome } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { FaPlus } from "react-icons/fa";
 
-const Nav = ({ token, clearToken }) => {
+const Nav = ({ token, clearToken, userId }) => {
   return (
     
-      <Navbar className="navbar" >
+    <Navbar className="navbar" >
       
-          <a> <Link 
-          // style={{ margin: "3px 10px" }} 
-          // style={{ color: "#d2b48c"}} 
-          to="/"> 
-            <AiOutlineHome /> </Link>
-          </a>
+    <a> <Link 
+    // style={{ margin: "3px 10px" }} 
+    // style={{ color: "#d2b48c"}} 
+    to="/"> 
+      <AiOutlineHome /> </Link>
+    </a>
 
-          <a> <Link 
-          // style={{ margin: "3px 10px" }}
-          //  style={{ color: "#d2b48c"}} 
-           to="/post">
-            <FaPlus /> </Link>
-          </a>
+    <a> <Link 
+    // style={{ margin: "3px 10px" }}
+    //  style={{ color: "#d2b48c"}} 
+    to={`/post/${userId}`}>
+      <FaPlus /> </Link>
+    </a>
 
-          <a> <Link 
-          // style={{ margin: "3px 10px "}} 
-          // style={{ color: "#d2b48c"}} 
-          to="/profile/:userId">
-            <CgProfile /> </Link>
-          </a>
+    <a> <Link 
+    // style={{ margin: "3px 10px "}} 
+    // style={{ color: "#d2b48c"}} 
+    to="/profile/:userId">
+      <CgProfile /> </Link>
+    </a> 
+    
        
 
         {/* {!token ? (
