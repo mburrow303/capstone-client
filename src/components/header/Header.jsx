@@ -1,14 +1,15 @@
 import React from "react";
-//import { Image } from 'react-bootstrap';
+import "../Styles/Header.css";
+
 
 function Header () {
 
-
 return (
-  <header>
-    {/* <Image src="%PUBLIC_URL%/favicon.png" alt="Header Image" fluid ></Image> */}
-    {/* Add other header content */}
-  </header>
+
+  <div className="header">
+    <img src="/ThymeShare.png" alt="Header Image"
+    style={{ width: 'auto', height: 'auto', maxHeight: '250px', display: 'block'}}/>
+  </div>
 );
 };
 

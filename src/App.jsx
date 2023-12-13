@@ -5,12 +5,12 @@ import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import Header from "./components/header/Header";
 
 //? import components here
-import Nav from "./components/nav/Nav";
 //import Footer from "./components/footer/Footer";
 import Auth from "./components/auth/Auth";
 import ProfileIndex from "./components/profileIndex/ProfileIndex";
 import PostIndex from "./components/postIndex/PostIndex";
 import { Home } from "./components/home/Home";
+import Nav from "./components/nav/Nav";
 
 function App() {
   //console.log("userId in App:", userId );
@@ -59,6 +59,8 @@ function App() {
           />
         </Routes>
         {/* <Footer /> */}
+
+        {/* {window.location.pathname !== '/' && <Nav />}  */}
         <Nav token={token} clearToken={clearToken} userId={userId} /> 
       </BrowserRouter>
     </div>
