@@ -10,6 +10,8 @@ function ProfileIndex({ token }) {
 
   let { userId } = useParams();
   console.log(userId);
+  console.log("PROFILES in ProfileIndex:", profiles);
+  //console.log("PROFILE in ProfileIndex", profile)
 
   React.useEffect(() => {
     async function runEffect() {

@@ -94,7 +94,8 @@ function Signup(props) {
       if (response.ok) {
         const userId = results.profile._id;
         props.setToken(results.token);
-        navigate(`/profile/${userId}`);
+        navigate(`/profile/${userId}`);  
+
       } else {
         console.log("Signup failed:", results.ERROR);
       }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  Button,
+  //Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -25,7 +25,7 @@ function AddPost({ token, setPosts }) {
   const [instructions, setInstructions] = useState("");
   const [notes, setNotes] = useState("");
   const [coverPhoto, setCoverPhoto] = useState("");
-  const [username, setUsername] = useState("");
+  //const [username, setUsername] = useState("");
 
   let { userId } = useParams();
 
@@ -55,6 +55,7 @@ function AddPost({ token, setPosts }) {
     });
 
     if (response.ok) {
+      
       toggle();
 
       // Get posts from database

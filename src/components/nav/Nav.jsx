@@ -7,36 +7,43 @@ import { CgProfile } from "react-icons/cg";
 import { FaPlus } from "react-icons/fa";
 
 const Nav = ({ token, clearToken, userId }) => {
+  console.log("userId in Nav:", userId);
   return (
-    
-    <Navbar className="navbar" >
-      
+    <Navbar className="navbar">
+      <div>
+        {" "}
+        <Link
+          // style={{ margin: "3px 10px" }}
+          // style={{ color: "#d2b48c"}}
+          to="/"
+        >
+          <AiOutlineHome />{" "}
+        </Link>
+      </div>
 
-    <a> <Link 
-    // style={{ margin: "3px 10px" }} 
-    // style={{ color: "#d2b48c"}} 
-    to="/"> 
-      <AiOutlineHome /> </Link>
-    </a>
+      <div>
+        <Link
+          // style={{ margin: "3px 10px" }}
+          //  style={{ color: "#d2b48c"}}
+          to={`/post/${userId}`}
+        >
+          {/* to="/post"> */}
+          <FaPlus />
+        </Link>
+      </div>
 
+      <div>
+        <Link
+          // style={{ margin: "3px 10px "}}
+          // style={{ color: "#d2b48c"}}
+          to="/profile"
+        >
+          {/* to={`/profile/${userId}`}> */}
+          <CgProfile />
+        </Link>
+      </div>
 
-    <a> <Link 
-    // style={{ margin: "3px 10px" }}
-    //  style={{ color: "#d2b48c"}} 
-    to={`/post/${userId}`}>
-      <FaPlus /> </Link>
-    </a>
-
-    <a> <Link 
-    // style={{ margin: "3px 10px "}} 
-    // style={{ color: "#d2b48c"}} 
-    to="/profile/:userId">
-      <CgProfile /> </Link>
-    </a> 
-    
-       
-
-        {/* {!token ? (
+      {/* {!token ? (
             <Link style={{ margin: "3px 10px" }} to="/">
               Sign Up/Login
             </Link>
@@ -45,8 +52,7 @@ const Nav = ({ token, clearToken, userId }) => {
               Log Out
             </Link>
           )} */}
-      </Navbar>
-    
+    </Navbar>
   );
 };
 

@@ -7,10 +7,10 @@ import {
   CardImg,
   CardFooter,
   CardColumns,
-  CardGroup,
 } from "reactstrap";
-import { useNavigate } from "react-router-dom";
-import { getAllPosts } from "../../lib/utils";
+//import { useNavigate } from "react-router-dom";
+//import { getAllPosts } from "../../lib/utils";
+import { useParams } from "react-router-dom";
 
 import "./PostDisplay.css";
 
@@ -18,8 +18,10 @@ import AddPost from "./addPost/AddPost";
 import UpdatePost from "./updatePost/UpdatePost";
 import DeletePost from "./deletePost/DeletePost";
 
-function PostDisplay({ token, posts, setPosts, currentUser }) {
+function PostDisplay({ token, posts, setPosts }) {
   //console.log("userId in PostDisplay:", userId);
+  const {userId} = useParams();
+  console.log(posts);
   return (
     <div>
       <br></br>
@@ -47,14 +49,14 @@ function PostDisplay({ token, posts, setPosts, currentUser }) {
               <CardText>Instructions: {post.instructions}</CardText>
               <CardText>Notes: {post.notes}</CardText>
               <CardText>
-                <small className="text-muted">Author: {post.userId}</small>
+                <small className="text-muted">Author: {post.username}</small>
               </CardText>
             </CardBody>
             <CardFooter>
-              {post.username === currentUser && (
+              {post.userId === userId && (
                 <>
                   <UpdatePost
-                    path={`/post/${post._id}`}
+                    //path={`/post/${post._id}`}
                     token={token}
                     post={post}
                     setPosts={setPosts}
@@ -63,7 +65,7 @@ function PostDisplay({ token, posts, setPosts, currentUser }) {
                   <br></br>
                   <br></br>
                   <DeletePost
-                    path={`/post/${post._id}`}
+                    //path={`/post/${post._id}`}
                     token={token}
                     post={post}
                     setPosts={setPosts}
