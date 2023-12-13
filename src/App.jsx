@@ -24,6 +24,7 @@ function App() {
   function initializeToken() {
     setToken(localStorage.token);
     console.log(localStorage.token);
+    setUserId(localStorage.userId);
   }
 
   function updateToken(newToken) {
@@ -46,7 +47,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/auth" element={<Auth setToken={updateToken} />} />
+          <Route path="/auth" element={<Auth setToken={updateToken} setUserId={setUserId} />} />
           {/*< Route path="/login" element={<Login setToken={updateToken} />} /> */}
           <Route
             path="/profile/:userId"
@@ -58,8 +59,9 @@ function App() {
           />
         </Routes>
         {/* <Footer /> */}
+
         {/* {window.location.pathname !== '/' && <Nav />}  */}
-        <Nav token={token} clearToken={clearToken} SetUserId={userId} />
+        <Nav token={token} clearToken={clearToken} userId={userId} /> 
       </BrowserRouter>
     </div>
   );

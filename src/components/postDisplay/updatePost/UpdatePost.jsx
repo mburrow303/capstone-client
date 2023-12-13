@@ -70,9 +70,9 @@ function UpdatePost({ token, post, setPosts, id }) {
       className="update-post"
       style={{ width: "48%", display: "inline-block" }}
     >
-      <button color="secondary" size="sm" onClick={toggle}>
-        Edit Post
-      </button>
+      <Button color="secondary" className="edit-button btn-block" onClick={toggle}>
+        Edit Post  
+      </Button>
       <Modal isOpen={modal} toggle={toggle} fullscreen>
         <ModalHeader toggle={toggle}>Edit Recipe Post</ModalHeader>
         <ModalBody>
@@ -126,12 +126,12 @@ function UpdatePost({ token, post, setPosts, id }) {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <button color="secondary" size="sm" onClick={UpdatePost}>
+          <Button color="secondary"  onClick={UpdatePost}>
             Update Recipe Post
-          </button>{" "}
-          <button color="secondary" size="sm" onClick={toggle}>
+          </Button>{" "}
+          <Button color="secondary"  onClick={toggle}>
             Cancel
-          </button>
+          </Button>
         </ModalFooter>
       </Modal>
     </div>

@@ -35,14 +35,14 @@ function PostDisplay({ token, posts, setPosts }) {
         {posts.map((post) => (
           <Card key={post._id} className="card-custom">
             <CardBody>
-              <CardImg
+              {/* <CardImg
                 top
                 width="100%"
                 src={post.coverPhoto}
                 alt="...Recipe Photo"
               />
               <br></br>
-              <br></br>
+              <br></br> */}
               <CardTitle tag="h5">{post.title}</CardTitle>
               <CardText>Description: {post.description}</CardText>
               <CardText>Ingredients: {post.ingredients}</CardText>
@@ -52,25 +52,27 @@ function PostDisplay({ token, posts, setPosts }) {
                 <small className="text-muted">Author: {post.username}</small>
               </CardText>
             </CardBody>
-            <CardFooter>
+            <CardFooter className="d-flex flex-column align-items-center">
               {post.userId === userId && (
                 <>
+                  <div className="w-100 mb-1">
                   <UpdatePost
-                    //path={`/post/${post._id}`}
                     token={token}
                     post={post}
                     setPosts={setPosts}
                     id={post._id}
                   />
+                  </div>
                   <br></br>
                   <br></br>
+                  <div className="w-100">
                   <DeletePost
-                    //path={`/post/${post._id}`}
                     token={token}
                     post={post}
                     setPosts={setPosts}
                     id={post._id}
                   />
+                </div>  
                 </>
               )}
             </CardFooter>

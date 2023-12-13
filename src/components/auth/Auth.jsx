@@ -25,22 +25,20 @@ function Auth(props) {
     <>
       <div id="login" style={{ width: "48%", display: "inline-block" }}>
         {/* Login Component */}
+        <br />
         <h2>Login</h2>
-        <Login setToken={props.setToken} />
+        <Login setToken={props.setToken} setUserId={props.setUserId} />
       </div>
 
       <div>
         <p id="no_account">Don't have an account?</p>
         <button id="toggle" onClick={() => handleClick()}>Sign Up</button>
       </div>
-      <br></br>
-      <br></br>
-      <br></br>
-      <br></br>
+      
       <div id="signup" style={{ width: "48%", display: "none" }}>
         {/* Signup Component */}
         <h2 id="signup_heading">Signup</h2>
-        <Signup setToken={props.setToken} />
+        <Signup setToken={props.setToken} setUserId={props.setUserId} />
       </div>
       <div id="back_to_login" style={{display:"none"}}><p>Already have an account?</p>
       <button id="log_in"  onClick={() => backToLogin()}>Log in</button>

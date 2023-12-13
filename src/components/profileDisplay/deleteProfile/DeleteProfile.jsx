@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "reactstrap";
 import "./DeleteProfile.css";
 
 function DeleteProfile({ token, profiles, setProfiles, userId }) {
@@ -59,9 +60,9 @@ function DeleteProfile({ token, profiles, setProfiles, userId }) {
 
   return (
     <div className="delete-profile">
-      <button className="delete-button" onClick={handleSubmit}>
+      <Button className="delete-button" onClick={handleSubmit}>
         Delete Profile
-      </button>
+      </Button>
 
       {response && <p>{response}</p>}
     </div>

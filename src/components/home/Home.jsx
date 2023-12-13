@@ -17,6 +17,7 @@ const Home = () => {
       {/* Form is made to hold background image in CSS file */}
         <Form className="container"></Form>
 
+
         <Card className="button" style={{ backgroundColor: '#d2b48c'}}>
           
           <p>Home Chefs Click Below</p>
@@ -26,6 +27,7 @@ const Home = () => {
               
               <Link to="/auth">Login / Sign Up</Link>
             </Button>
+
          </a> 
         </Card>
 
@@ -35,7 +37,7 @@ const Home = () => {
           
             <Button style={{ backgroundColor: '#808080'}}>
             
-              <Link to="/auth"> Sign Up</Link>
+              <Link to="/auth"> Login / Sign Up </Link>
             </Button>
           
         </Card> */}
