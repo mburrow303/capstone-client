@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
-
+import Header from "./components/header/Header";
 //? import components here
 import Nav from "./components/nav/Nav";
 //import Header from "./components/header/Header";
@@ -40,8 +40,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Header /> */}
-        <Nav token={token} clearToken={clearToken} /> 
+        <Header />
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/auth" element={<Auth setToken={updateToken}/>} />
@@ -50,6 +49,7 @@ function App() {
           <Route path="/post/:userId" element={<PostIndex token={token} /* userId={userId} */ />} />
         </Routes>
         {/* <Footer /> */}
+        <Nav token={token} clearToken={clearToken} /> 
       </BrowserRouter>
     </div>
   );

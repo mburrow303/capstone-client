@@ -1,59 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {
-   Form, 
-   FormGroup,  
-   Button, 
-  } from "reactstrap";
 import "../Styles/Home.css";
+import { Form } from "reactstrap";
+import { Card, CardBody, Button } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.css";
 // import { Card, CardBody, CardTitle, CardSubtitle, CardText, CardLink} from "react-router-dom";
 
 const Home = () => {
   return (
     Form,
-    FormGroup,
-    Link,
+    Card,
+    CardBody,
     Button,
+
     (
-    <body>
-    <>
-    
-      <Form className='container'>
-      <img src="https://github.com/maryreagan/mini-search/blob/master/favicon.png?raw=true"></img>
-        <FormGroup floating>
+      <>
+      {/* Form is made to hold background image in CSS file */}
+        <Form className="container"></Form>
+
+       
+        <Card className="top button" style={{ backgroundColor: '#d2b48c'}}>
           
-           {/* <Link class="link" style={{ margin: "3px 10px" }} to="/auth"></Link> */}
-                
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+          <p>Already a member?</p>
+
+          
+            
+            <Button style={{ backgroundColor: '#808080'}}>
               
-                
-    
-        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth">
-          Login
-          </Link></Button>
-    
-   </FormGroup>
-      </Form>
+              <Link to="/auth">Login</Link>
+            </Button>
+          
+        </Card>
 
-      <Form className="bottom">
-        Don't Have an account? 
-        <br></br>
-        <Button className="button">  <Link style={{ margin: "3px 10px" }} to="/auth"> Sign Up</Link></Button>
+        <Card className="bottom button" style={{ backgroundColor: '#d2b48c'}}>
+          <p>Don't Have an account?</p>
 
-      </Form>
-      
-    </>
-      </body>
+          
+            <Button style={{ backgroundColor: '#808080'}}>
+            
+              <Link to="/auth"> Sign Up</Link>
+            </Button>
+          
+        </Card>
+      </>
     )
   );
 };
 
-export { 
-   Home 
-};
+export { Home };
