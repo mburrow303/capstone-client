@@ -45,7 +45,7 @@ function Login({ setToken }) {
         />
         <br />
         {/* button:s */}
-        <button type="submit">Login to Account</button>
+        <button id="submit_button" type="submit">Login to Account</button>
         {/* <button onClick={() => navigate('/profile')}>create account</button> */}
         {/* end button:s */}
         <br />
