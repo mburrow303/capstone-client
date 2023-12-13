@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
+import { Navbar } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../Styles/Nav.css";
 import { AiOutlineHome } from "react-icons/ai";
@@ -11,12 +11,14 @@ const Nav = ({ token, clearToken, userId }) => {
     
     <Navbar className="navbar" >
       
+
     <a> <Link 
     // style={{ margin: "3px 10px" }} 
     // style={{ color: "#d2b48c"}} 
     to="/"> 
       <AiOutlineHome /> </Link>
     </a>
+
 
     <a> <Link 
     // style={{ margin: "3px 10px" }}
