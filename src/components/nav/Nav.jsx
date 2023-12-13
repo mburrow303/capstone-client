@@ -1,5 +1,8 @@
 import React from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
+import {
+  Navbar,
+  //NavbarBrand
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import "../Styles/Nav.css";
 import { AiOutlineHome } from "react-icons/ai";
@@ -7,34 +10,43 @@ import { CgProfile } from "react-icons/cg";
 import { FaPlus } from "react-icons/fa";
 
 const Nav = ({ token, clearToken, userId }) => {
+  console.log("userId in Nav:", userId);
   return (
-    
-    <Navbar className="navbar" >
-      
-    <a> <Link 
-    // style={{ margin: "3px 10px" }} 
-    // style={{ color: "#d2b48c"}} 
-    to="/"> 
-      <AiOutlineHome /> </Link>
-    </a>
+    <Navbar className="navbar">
+      <div>
+        {" "}
+        <Link
+          // style={{ margin: "3px 10px" }}
+          // style={{ color: "#d2b48c"}}
+          to="/"
+        >
+          <AiOutlineHome />{" "}
+        </Link>
+      </div>
 
-    <a> <Link 
-    // style={{ margin: "3px 10px" }}
-    //  style={{ color: "#d2b48c"}} 
-    to={`/post/${userId}`}>
-      <FaPlus /> </Link>
-    </a>
+      <div>
+        <Link
+          // style={{ margin: "3px 10px" }}
+          //  style={{ color: "#d2b48c"}}
+          to={`/post/${userId}`}
+        >
+          {/* to="/post"> */}
+          <FaPlus />
+        </Link>
+      </div>
 
-    <a> <Link 
-    // style={{ margin: "3px 10px "}} 
-    // style={{ color: "#d2b48c"}} 
-    to="/profile/:userId">
-      <CgProfile /> </Link>
-    </a> 
-    
-       
+      <div>
+        <Link
+          // style={{ margin: "3px 10px "}}
+          // style={{ color: "#d2b48c"}}
+          to="/profile"
+        >
+          {/* to={`/profile/${userId}`}> */}
+          <CgProfile />
+        </Link>
+      </div>
 
-        {/* {!token ? (
+      {/* {!token ? (
             <Link style={{ margin: "3px 10px" }} to="/">
               Sign Up/Login
             </Link>
@@ -43,8 +55,7 @@ const Nav = ({ token, clearToken, userId }) => {
               Log Out
             </Link>
           )} */}
-      </Navbar>
-    
+    </Navbar>
   );
 };
 
