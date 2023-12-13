@@ -1,19 +1,38 @@
 .navbar  {
+  background-color: #808080;
   overflow: hidden;
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #4d4d4d;
-  
+  margin-top: 10%;
+  margin-bottom: 10%;
+  padding-top: 100%;
+  padding-bottom: 100%;
 }
 
 .navbar a {
-  font-size: 2rem;
-  width: 25%;
-  /* text-align: center; */
   color: #808080;
+  text-align: center;
+  padding: 1px 10px;
+  text-decoration: none;
+  font-size: 40px;
 }
 
- a:hover {
-  background-color: #ECECEC;
+/* Change the color of links on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
+
+/* Add a color to the active/current link */
+.navbar a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+
+/* Hide the link that should open and close the navbar on small screens */
+.navbar .icon {
+  display: none;
+}
+

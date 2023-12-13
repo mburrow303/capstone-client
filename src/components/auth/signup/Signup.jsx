@@ -60,7 +60,7 @@ function Signup(props) {
         />
         <text>Upload a Profile Image</text>
         <br></br>
-        <button type="submit" onClick={displayInputFields}>
+        <button id="create_account" type="submit" onClick={displayInputFields}>
           Create Account
         </button>
         {/* <button onClick={() => navigate('/login')}>Back to Login</button> */}

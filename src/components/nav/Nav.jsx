@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  //NavbarBrand
-} from "reactstrap";
+import { Navbar } from "reactstrap";
 import { Link } from "react-router-dom";
 import "../Styles/Nav.css";
 import { AiOutlineHome } from "react-icons/ai";
