@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {
-  //Button,
+  Button,
   Modal,
   ModalHeader,
   ModalBody,
@@ -70,9 +70,9 @@ function AddPost({ token, setPosts }) {
 
   return (
     <div style={{ width: "48%", display: "inline-block" }}>
-      <button color="secondary" size="sm" onClick={toggle}>
+      <Button color="secondary" id="add" className="add-button" onClick={toggle}>
         Add New Recipe Post
-      </button>
+      </Button>
       <Modal isOpen={modal} toggle={toggle} fullscreen>
         <ModalHeader toggle={toggle}>Add New Recipe Post</ModalHeader>
         <ModalBody>
@@ -123,14 +123,14 @@ function AddPost({ token, setPosts }) {
                 onChange={(e) => setCoverPhoto(e.target.value)}
               />
             </FormGroup> */}
-            <button color="secondary" size="sm">
+            <Button color="secondary">
               Create New Recipe Post
-            </button>
+            </Button>
             <br></br>
             <br></br>
-            <button color="secondary" size="sm" onClick={toggle}>
+            <Button color="secondary" onClick={toggle}>
               Cancel
-            </button>
+            </Button>
           </Form>
         </ModalBody>
         <ModalFooter></ModalFooter>

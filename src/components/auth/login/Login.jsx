@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './login.css';
 
-function Login({ setToken }) {
+function Login({ setToken, setUserId }) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -27,6 +27,8 @@ function Login({ setToken }) {
     if (response.status === 200 && results.profile._id) {
       const { profile: { _id: userId }, token } = results;
       setToken(token);
+      setUserId(userId);
+      localStorage.userId = userId;
       navigate(`/profile/${userId}`);
     } else {
       console.error("Invalid response format or missing userId");
@@ -35,6 +37,7 @@ function Login({ setToken }) {
 
   return (
     <div>
+      <br />
       <form onSubmit={loginUser}>
         <input placeholder="email" onChange={(e) => setEmail(e.target.value)} />
         <br />
@@ -48,6 +51,17 @@ function Login({ setToken }) {
         <button id="submit_button" type="submit">Login to Account</button>
         {/* <button onClick={() => navigate('/profile')}>create account</button> */}
         {/* end button:s */}
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <br />
       </form>
     </div>

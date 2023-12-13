@@ -19,7 +19,7 @@ const Home = () => {
         <Form className="container"></Form>
 
        
-        <Card className="top button" style={{ backgroundColor: '#d2b48c'}}>
+        {/* <Card className="top button" style={{ backgroundColor: '#d2b48c'}}>
           
           <p>Already a member?</p>
 
@@ -30,17 +30,17 @@ const Home = () => {
               <Link to="/auth">Login</Link>
             </Button>
           
-        </Card>
+        </Card> */}
 
         <Card className="bottom button" style={{ backgroundColor: '#d2b48c'}}>
-          <p>Don't Have an account?</p>
+          <p>Already a member? Don't Have an account?</p>
 
           
             <Button style={{ backgroundColor: '#808080'}}>
             
-              <Link to="/auth"> Sign Up</Link>
+              <Link to="/auth"> Login / Sign Up </Link>
             </Button>
-          
+            <br />
         </Card>
       </>
     )

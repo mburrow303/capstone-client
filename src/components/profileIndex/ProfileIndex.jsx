@@ -6,7 +6,7 @@ import { useParams } from "react-router";
 import "./ProfileIndex.css";
 
 function ProfileIndex({ token }) {
-  const [profiles, setProfiles] = React.useState([]);
+  /* const [profiles, setProfiles] = React.useState([]);
 
   let { userId } = useParams();
   console.log(userId);
@@ -19,7 +19,7 @@ function ProfileIndex({ token }) {
       setProfiles(allProfiles);
     }
     runEffect();
-  }, [token]);
+  }, [token]); */
 
   return (
     <div>
@@ -35,9 +35,9 @@ function ProfileIndex({ token }) {
         </Card> */}
       <ProfileDisplay
         token={token}
-        profiles={profiles}
-        setProfiles={setProfiles}
-        userId={userId}
+        //profiles={profiles}
+        //setProfiles={setProfiles}
+        //userId={userId}
       />
     </div>
   );

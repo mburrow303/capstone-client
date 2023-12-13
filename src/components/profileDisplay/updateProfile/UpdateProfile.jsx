@@ -93,9 +93,9 @@ function UpdateProfile({ token, userId }) {
 
   return (
     <div className="update-profile">
-      <button color="secondary" size="sm" onClick={toggleModal}>
+      <Button color="secondary" onClick={toggleModal}>
         Edit Profile
-      </button>
+      </Button>
       <Modal isOpen={modal} toggle={toggleModal} fullscreen>
         <ModalHeader toggle={toggleModal}>Update Profile</ModalHeader>
         <ModalBody>
@@ -116,15 +116,15 @@ function UpdateProfile({ token, userId }) {
                 )
             )}
             <br></br>
-            <button type="button" color="secondary" onClick={handleSubmit}>
+            <Button type="button" color="secondary" onClick={handleSubmit}>
               Update Profile
-            </button>
+            </Button>
           </form>
         </ModalBody>
         <ModalFooter>
-          <button color="secondary" onClick={toggleModal}>
+          <Button color="secondary" onClick={toggleModal}>
             Cancel
-          </button>
+          </Button>
         </ModalFooter>
       </Modal>
       {response && <p>{response}</p>}

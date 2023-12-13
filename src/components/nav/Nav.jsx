@@ -36,9 +36,9 @@ const Nav = ({ token, clearToken, userId }) => {
         <Link
           // style={{ margin: "3px 10px "}}
           // style={{ color: "#d2b48c"}}
-          to="/profile"
-        >
-          {/* to={`/profile/${userId}`}> */}
+           to={`/profile/${userId}`}> 
+          {/* //to="/profile"
+          > */}
           <CgProfile />
         </Link>
       </div>

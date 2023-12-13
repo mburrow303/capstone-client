@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./DeletePost.css";
+import { Button } from "reactstrap";
 
 function DeletePost({ token, post, setPosts, id }) {
   //const [post, setPost] = useState("");
@@ -39,9 +40,9 @@ function DeletePost({ token, post, setPosts, id }) {
           value={post}
           onChange={handleInputChange}
         /> */}
-        <button className="delete-button" type="submit" color="danger">
+        <Button className="delete-button" type="submit" color="secondary">
           Delete Post
-        </button>
+        </Button>
       </form>
       {response && <p>{response}</p>}
     </div>

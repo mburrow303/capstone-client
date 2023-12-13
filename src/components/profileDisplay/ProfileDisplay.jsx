@@ -20,14 +20,37 @@ import UpdateProfile from "./updateProfile/UpdateProfile";
 function ProfileDisplay({ token, profiles, setProfiles }) {
   //const navigate = useNavigate();
   const { userId } = useParams();
+  console.log(userId);
   const [profile, setProfile] = useState(null);
   const [error, setError] = useState(null);
 
   // Fetch the profile based on userId
   useEffect(() => {
     //console.log("Fetching profile for userId:", userId);
-
-    const fetchProfile = async () => {
+   const fetchProfile = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:4000/profile/${userId}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: token
+          },
+        }
+      )
+      if(response.ok) {
+      const data = await response.json();
+          console.log(data);
+          setProfile(data);
+      } else {
+            const data = await response.json();
+            setError(data.error || "Unknown error");}
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+   };
+   fetchProfile();
+    /* const fetchProfile = async () => {
       try {
         const response = await fetch(
           `http://localhost:4000/profile/${userId}`,
@@ -42,7 +65,8 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
 
         if (response.ok) {
           const data = await response.json();
-          setProfile(data.found);
+          console.log(data);
+          setProfile(data);
         } else {
           const data = await response.json();
           setError(data.error || "Unknown error");
@@ -52,17 +76,18 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
         setError("Error fetching profile. Please try again.");
       }
     };
-    fetchProfile();
-  }, [userId, token]);
+    fetchProfile(); */
+  }, [token]);
   
   console.log("PROFILE:", profile);
   return (
     <div>
+      {/* <h1>{profile?.found.username}</h1> */}
       <Card id="picture">
         <CardBody>
-          <CardTitle tag="h5">{profile.username}</CardTitle>
+          <CardTitle tag="h5">{profile?.found.username}</CardTitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6"></CardSubtitle>
-          <CardText>{profile.bio}</CardText>
+          <CardText>{profile?.found.bio}</CardText>
         </CardBody>
       </Card>
 
@@ -80,12 +105,16 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
         src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGhvbWVtYWRlJTIwZm9vZHxlbnwwfHwwfHx8MA%3D%3D"
       />
 
-      {/* Render the DeleteProfile and UpdateProfile components only when the profile is available */}
+       {/* Render the DeleteProfile and UpdateProfile components only when the profile is available  */}
       {error ? (
         <p>Error: {error}</p>
       ) : (
         profile && (
           <>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <UpdateProfile
               userId={userId}
               token={token}
@@ -102,14 +131,13 @@ function ProfileDisplay({ token, profiles, setProfiles }) {
             />
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
-            <Link to={`/post/${userId}`}>
+            
+            {/* <Link to={`/post/${userId}`}>
               <button>View & Edit My Recipe Posts</button>
-            </Link>
+            </Link> */}
           </>
         )
-      )}
+      )} 
     </div>
   );
 }

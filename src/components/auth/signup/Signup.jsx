@@ -94,6 +94,8 @@ function Signup(props) {
       if (response.ok) {
         const userId = results.profile._id;
         props.setToken(results.token);
+        props.setUserId(userId);
+        localStorage.userId = userId;
         navigate(`/profile/${userId}`);  
 
       } else {
