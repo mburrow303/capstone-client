@@ -43,7 +43,7 @@ function Auth(props) {
         <Signup setToken={props.setToken} />
       </div>
       <div id="back_to_login" style={{display:"none"}}><p>Already have an account?</p>
-      <button  onClick={() => backToLogin()}>Log in</button>
+      <button id="log_in"  onClick={() => backToLogin()}>Log in</button>
       </div>
     </>
   );
